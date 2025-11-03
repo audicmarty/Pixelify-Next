@@ -154,6 +154,20 @@ if you find Status: Error xxxxx on some flags, then you may need to reinstall pi
 - France (FR)
 - Germany (DE)
 
+### GitHub Pixel features link tree
+Missing something? Here are some more Pixel features from other developers. (meanwhile
+we're working on implementing more in pixelify)
+• circle to search:
+<a href="https://github.com/parallelcc/MiCTS/tree/main">Circle 2 search</a>
+  (<a href="https://github.com/theovilardo/PixelPlay">README</a>)
+• pixel play:
+<a href="https://github.com/theovilardo/PixelPlay">Pixel Play</a>
+• now playing:
+<a href="https://github.com/Mahmud0808/PixelLauncherEnhanced">Ambient music mod</a>
+• customize your pixel launcher:
+<a href="https://github.com/KieronQuinn/PixelLauncherMods">Pixel Launcher mods</a>
+<a href="https://github.com/Mahmud0808/PixelLauncherEnhanced">Pixel Launcher Enhanced</a>
+
 ## Contribute to project
 - Reporting bugs with logs
 - Feature Requests
@@ -176,4 +190,5 @@ if you find Status: Error xxxxx on some flags, then you may need to reinstall pi
 -INIT PIxelify Next
 ### Version 4.1
 -Fix bugs
+
 
