@@ -72,9 +72,6 @@ If Some features not working,
 - Check file /sdcard/Pixelify/flaglog.txt
 if you find Status: Error xxxxx on some flags, then you may need to reinstall pixelify.
 
-## Stargazers over time
-[![Stargazers over time](https://starchart.cc/BasGame1/Pixelify-Next.svg?variant=adaptive)](https://starchart.cc/BasGame1/Pixelify-Next)
-
 ### Installation without Volume Keys
 - Use packages with Pixelify-${version}-no_VK.zip
 - Place config.prop in your internal storage>Pixelify (/sdcard/Pixelify/config.prop)
@@ -158,14 +155,22 @@ if you find Status: Error xxxxx on some flags, then you may need to reinstall pi
 Missing something? Here are some more Pixel features from other developers. (meanwhile
 we're working on implementing more in pixelify)
 • circle to search:
+<br>
 <a href="https://github.com/parallelcc/MiCTS/tree/main">Circle 2 search</a>
   (<a href="https://github.com/theovilardo/PixelPlay">README</a>)
+<br>
 • pixel play:
+<br>
 <a href="https://github.com/theovilardo/PixelPlay">Pixel Play</a>
+<br>
 • now playing:
+<br>
 <a href="https://github.com/Mahmud0808/PixelLauncherEnhanced">Ambient music mod</a>
+<br>
 • customize your pixel launcher:
+<br>
 <a href="https://github.com/KieronQuinn/PixelLauncherMods">Pixel Launcher mods</a>
+<br>
 <a href="https://github.com/Mahmud0808/PixelLauncherEnhanced">Pixel Launcher Enhanced</a>
 
 ## Contribute to project
@@ -186,9 +191,14 @@ we're working on implementing more in pixelify)
 - [Saitama](https://github.com/saitamasahil) Fixing Pixel Launcher crashes
 - [Gapps Flag Leaks](https://t.me/GappsLeaks) AssembleDebug For some flags
 - Pixelify Support Group Members for testing beta versions :)
+
+## Stargazers over time
+[![Stargazers over time](https://starchart.cc/BasGame1/Pixelify-Next.svg?variant=adaptive)](https://starchart.cc/BasGame1/Pixelify-Next)
+
 ### Version 4.0
 -INIT PIxelify Next
 ### Version 4.1
 -Fix bugs
+
 
 
