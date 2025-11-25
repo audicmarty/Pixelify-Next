@@ -25,9 +25,29 @@ jobs:
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
     - name: Build with Gradle
-      run: ./gradlew clean zipAll -Pandroid.enableR8.fullMode=true
+      run: ./gradlew clean :zygisk:assembleRelease -Pandroid.enableR8.fullMode=true -Pandroid.externalNativeBuild.cmake.arguments="-DCMAKE_BUILD_TYPE=MinSizeRel,-DANDROID_STL=c++_static"
+    - name: Package Magisk Module
+      run: |
+        NDK_VERSION=25.1.8937393
+        mkdir module
+        cp -r . module/
+        rm -rf module/.git module/.gradle module/gradle module/build module/*build module/zygisk/gradle module/zygisk/src module/zygisk/.gradle module/.github
+        mkdir -p module/zygisk
+        # Copy built .so files (adjust lib name if not 'libpixelify.so' or similar; use 'find zygisk -name "*.so"' to verify paths if needed)
+        cp zygisk/build/lib/arm64-v8a/*.so module/zygisk/arm64.so || true
+        cp zygisk/build/lib/armeabi-v7a/*.so module/zygisk/arm.so || true
+        cp zygisk/build/lib/x86/*.so module/zygisk/x86.so || true
+        cp zygisk/build/lib/x86_64/*.so module/zygisk/x86_64.so || true
+        # Strip .so files for size reduction
+        $ANDROID_HOME/ndk/$NDK_VERSION/toolchains/llvm/prebuilt/linux-x86_64/bin/aarch64-linux-android-strip --strip-unneeded module/zygisk/arm64.so || true
+        $ANDROID_HOME/ndk/$NDK_VERSION/toolchains/llvm/prebuilt/linux-x86_64/bin/arm-linux-androideabi-strip --strip-unneeded module/zygisk/arm.so || true
+        $ANDROID_HOME/ndk/$NDK_VERSION/toolchains/llvm/prebuilt/linux-x86_64/bin/i686-linux-android-strip --strip-unneeded module/zygisk/x86.so || true
+        $ANDROID_HOME/ndk/$NDK_VERSION/toolchains/llvm/prebuilt/linux-x86_64/bin/x86_64-linux-android-strip --strip-unneeded module/zygisk/x86_64.so || true
+        cd module
+        zip -r ../Pixelify-Next.zip .
+        cd ..
     - name: Upload Artifacts
       uses: actions/upload-artifact@v4
       with:
         name: Magisk-Module-${{ inputs.branch }}
-        path: out/*.zip
+        path: Pixelify-Next.zip
