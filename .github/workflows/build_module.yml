@@ -32,33 +32,10 @@ jobs:
       run: chmod +x gradlew
 
     - name: Build with Gradle
-      run: ./gradlew :zygisk:assembleRelease
-
-    - name: Optimize Artifacts
-      run: |
-        cd out
-        for zip_file in *.zip; do
-          echo "Optimizing $zip_file"
-          # Create a temporary directory for extraction
-          temp_dir="temp_${zip_file%.*}"
-          mkdir -p "$temp_dir"
-          unzip -q "$zip_file" -d "$temp_dir"
-          
-          # Strip shared libraries to reduce size
-          find "$temp_dir" -name "*.so" -exec strip --strip-unneeded {} \;
-          
-          # Re-zip with maximum compression
-          cd "$temp_dir"
-          zip -9 -r -q "../$zip_file" .
-          cd ..
-          
-          # Clean up
-          rm -rf "$temp_dir"
-        done
+      run: ./gradlew :zygisk:assembleRelease -Pandroid.native.buildOutput=release -DCMAKE_BUILD_TYPE=Release
 
     - name: Upload Artifacts
       uses: actions/upload-artifact@v4
       with:
         name: Magisk-Module-${{ github.event.inputs.branch }}
         path: out/*.zip
-        compression-level: 9
