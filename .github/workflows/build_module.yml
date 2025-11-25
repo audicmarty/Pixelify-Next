@@ -32,7 +32,7 @@ jobs:
       run: chmod +x gradlew
 
     - name: Build with Gradle
-      run: ./gradlew clean :zygisk:assembleRelease
+      run: ./gradlew clean :zygisk:assembleRelease -DCMAKE_BUILD_TYPE=MinSizeRel -DANDROID_STL=c++_static -Pandroid.enableR8.fullMode=true
 
     - name: Upload Artifacts
       uses: actions/upload-artifact@v4
